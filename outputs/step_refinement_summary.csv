@@ -1,0 +1,9 @@
+case_id,baseline_label,load_steps,points_per_branch,peak_base_reaction,total_loop_energy,total_row_dissipation,final_min_q_b_over_q_b0,weak_state_label,label_matches_baseline,n_newton_failures,converged
+W5-001,slip_dominated,49,4,16015.645545393229,2711465.3232581588,1.3493597753046314,0.7208169964567064,slip_dominated,True,0,True
+W5-001,slip_dominated,97,8,24023.46831816435,4060536.308744409,1.197189676871976,0.7543149655277269,slip_dominated,True,0,True
+W5-001,slip_dominated,205,17,28262.90390369296,5253198.685914205,1.1113240024581374,0.7696128837950881,slip_dominated,True,0,True
+W5-001,slip_dominated,397,33,30090.000721752644,5806135.306868281,1.0804002081065756,0.7759826812371816,slip_dominated,True,0,True
+W5-002,mixed_slip_stability,49,4,32031.291090786457,10045053.6531041,0.0,1.0,mixed_slip_stability,True,0,True
+W5-002,mixed_slip_stability,97,8,32031.291090786457,10045053.653109659,0.0,1.0,mixed_slip_stability,True,0,True
+W5-002,mixed_slip_stability,205,17,32031.291090786457,10021881.672360025,0.0,1.0,mixed_slip_stability,True,0,True
+W5-002,mixed_slip_stability,397,33,32031.291090786457,10038904.247752551,0.0,1.0,mixed_slip_stability,True,0,True

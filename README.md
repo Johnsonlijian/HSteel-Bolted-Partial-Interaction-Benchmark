@@ -1,6 +1,6 @@
 # HSteel Bolted Partial-Interaction Benchmark
 
-Status: W17 public-release candidate authorized by the author for GitHub publication.
+Status: public reproducibility package authorized by the author for GitHub publication.
 
 This package supports the manuscript:
 
@@ -13,12 +13,13 @@ The package is intentionally narrower than the private working project. It conta
 1. Synthetic recovery and DOI-anchored calibration workflow for the preload-relaxation law.
 2. Extended reduced-order member solver with row-level stick-slip and preload-state history.
 3. Analytical-limit sanity checks for zero-friction and infinite-friction composite-action limits.
-4. W4 first fixed-`I_eff` slice.
-5. W5 90-case fixed-section benchmark.
-6. W13 `eta_dis` envelope and row-slip-shape sensitivity checks.
-7. Programmatic Figure 1, Figure 5, and Figure 6 generation.
-8. W16 clean timing table for the core reproduction commands.
-9. Corrected archive-derived section-normalization table approved for public release.
+4. First fixed-`I_eff` slice.
+5. Ninety-case fixed-section benchmark.
+6. `eta_dis` envelope and row-slip-shape sensitivity checks.
+7. Step-refinement and label-threshold defensive checks.
+8. Programmatic Figure 1, Figure 4, Figure 5, and Figure 6 generation.
+9. Clean timing table for the core reproduction commands.
+10. Corrected archive-derived section-normalization table approved for public release.
 
 ## Repository Layout
 
@@ -37,7 +38,8 @@ The package is intentionally narrower than the private working project. It conta
 |   |-- run_w4_fixed_ieff_sweep.py
 |   |-- run_w5_full_benchmark.py
 |   |-- run_w13_sensitivity.py
-|   `-- run_w16_timing.py
+|   |-- run_defensive_sensitivity.py
+|   `-- run_timing.py
 |-- solver/
 |-- figures/
 |-- outputs/

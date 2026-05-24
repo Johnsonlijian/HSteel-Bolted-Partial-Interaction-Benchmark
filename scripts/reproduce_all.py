@@ -43,8 +43,11 @@ def main() -> int:
     run([sys.executable, "code/run_w4_fixed_ieff_sweep.py"])
     run([sys.executable, "code/run_w5_full_benchmark.py"])
     run([sys.executable, "code/run_w13_sensitivity.py"])
+    run([sys.executable, "code/run_defensive_sensitivity.py"])
+    run([sys.executable, "figures/fig4_response_state_map.py"])
     run([sys.executable, "figures/fig5_sensitivity_ablation.py"])
     run([sys.executable, "figures/fig6_archive_response_proxy.py"])
+    run([sys.executable, "code/run_timing.py"])
     return 0
 
 

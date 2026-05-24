@@ -73,40 +73,47 @@ n_failed = 0
 global label count = 5 weak response classes
 ```
 
-## 6. W13 Sensitivity and Ablation
+## 6. Sensitivity, defensive checks, and timing
 
 ```powershell
 $env:HSTEEL_OUTPUT_DIR="outputs"
 python code\run_w13_sensitivity.py
+python code\run_defensive_sensitivity.py
 python figures\fig5_sensitivity_ablation.py
+python figures\fig4_response_state_map.py
 python figures\fig6_archive_response_proxy.py
-python code\run_w16_timing.py
+python code\run_timing.py
 Remove-Item Env:HSTEEL_OUTPUT_DIR
 ```
 
-Expected W13 summary:
+Expected sensitivity summary:
 
 ```text
 8 scenarios x 90 cases = 720 cases
 all cases converged
 eta envelope label counts unchanged
 row-shape alternatives retain four to five labels
+threshold perturbations retain all five labels
+representative step-refinement cases retain their screening labels
 ```
 
-The figure is written to:
+Key outputs are written to:
 
 ```text
+figures/fig4_response_state_map.png
 figures/fig5_sensitivity_ablation.png
 figures/fig6_archive_response_proxy.png
-outputs/w16_timing_table.csv
-outputs/w16_timing_table.md
+outputs/step_refinement_summary.csv
+outputs/label_threshold_sensitivity.csv
+outputs/timing_table.csv
+outputs/timing_table.md
 ```
 
 ## 7. Calibration
 
 The derived calibration table is included as `outputs/relaxation_fit_table.csv`.
 
-Full re-fitting requires the digitized calibration CSVs used in the private project. Those CSVs are not bundled in this W15 public-release candidate until the authors confirm redistribution rights for extracted values from the source papers. The DOI metadata and fit table are included so the benchmark can be rerun without redistributing raw publisher-derived data.
+Full re-fitting requires the digitized calibration CSVs used in the private project. Those CSVs are not bundled in the public package because redistribution rights for extracted values from the source papers are not asserted. The DOI metadata and fit table are included so the benchmark can be rerun without redistributing raw publisher-derived data.
 
 ## 8. Archive Cross-Check Boundary
 

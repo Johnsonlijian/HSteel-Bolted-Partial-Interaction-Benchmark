@@ -1,8 +1,8 @@
 """Clean timing rerun for the JCSR submission package.
 
 The script times the core reproducibility commands in a fresh output
-subdirectory. It does not change the manuscript's canonical W4/W5/W13 output
-tables; it writes a separate W16 timing table for SI reporting.
+subdirectory. It does not change the manuscript's canonical benchmark and
+sensitivity output tables; it writes a separate timing table for SI reporting.
 """
 
 from __future__ import annotations
@@ -32,9 +32,9 @@ def resolve_output_root() -> Path:
 
 
 OUTPUT_ROOT = resolve_output_root()
-TIMING_OUTPUT_DIR = OUTPUT_ROOT / "w16_timing_rerun"
-TIMING_CSV = OUTPUT_ROOT / "w16_timing_table.csv"
-TIMING_MD = OUTPUT_ROOT / "w16_timing_table.md"
+TIMING_OUTPUT_DIR = OUTPUT_ROOT / "timing_rerun"
+TIMING_CSV = OUTPUT_ROOT / "timing_table.csv"
+TIMING_MD = OUTPUT_ROOT / "timing_table.md"
 
 
 @dataclass(frozen=True)
@@ -144,7 +144,7 @@ def write_csv(rows: list[dict[str, str]]) -> None:
 def write_markdown(rows: list[dict[str, str]]) -> None:
     total = sum(float(row["wall_time_s"]) for row in rows)
     lines = [
-        "# W16 Clean Timing Table",
+        "# Clean Timing Table",
         "",
         "Environment: Windows, Python 3.11.15, project-local dependency environment.",
         f"Output directory: `{TIMING_OUTPUT_DIR}`.",
@@ -172,12 +172,12 @@ def main() -> int:
     write_csv(rows)
     write_markdown(rows)
     failed = [row for row in rows if row["returncode"] != "0"]
-    print(f"w16_timing_rows={len(rows)}")
-    print(f"w16_timing_total_s={sum(float(row['wall_time_s']) for row in rows):.3f}")
-    print(f"w16_timing_csv={TIMING_CSV}")
-    print(f"w16_timing_md={TIMING_MD}")
+    print(f"timing_rows={len(rows)}")
+    print(f"timing_total_s={sum(float(row['wall_time_s']) for row in rows):.3f}")
+    print(f"timing_csv={TIMING_CSV}")
+    print(f"timing_md={TIMING_MD}")
     if failed:
-        print(f"w16_timing_failed_steps={[row['step_id'] for row in failed]}")
+        print(f"timing_failed_steps={[row['step_id'] for row in failed]}")
         return 2
     return 0
 

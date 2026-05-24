@@ -1,6 +1,6 @@
 # Package Manifest
 
-Generated in W15 as a local public-release candidate.
+Local public-release candidate for the JCSR submission.
 
 ## Included Directories
 
@@ -8,8 +8,8 @@ Generated in W15 as a local public-release candidate.
 | --- | --- | --- |
 | `code/` | Benchmark, calibration, normalization, and sensitivity scripts plus tests | Public candidate |
 | `solver/` | Reduced-order interface and member solver modules | Public candidate |
-| `figures/` | Programmatic Figure 1 and Figure 5 scripts plus PNG outputs | Public candidate |
-| `outputs/` | Derived calibration, toy-case, W4, W5, W13, W16 timing, and corrected archive-normalization outputs | Public candidate |
+| `figures/` | Programmatic Figure 1, Figure 4, Figure 5, and Figure 6 scripts plus PNG outputs | Public candidate |
+| `outputs/` | Derived calibration, toy-case, benchmark, sensitivity, defensive-check, timing, and corrected archive-normalization outputs | Public candidate |
 | `scripts/` | Smoke-test/reproduction runner | Public candidate |
 
 ## Excluded From Package
@@ -38,7 +38,9 @@ python solver\extended_member_model.py --fit-table outputs\relaxation_fit_table.
 python code\run_w4_fixed_ieff_sweep.py
 python code\run_w5_full_benchmark.py
 python code\run_w13_sensitivity.py
+python code\run_defensive_sensitivity.py
+python figures\fig4_response_state_map.py
 python figures\fig5_sensitivity_ablation.py
-python code\run_w16_timing.py
+python code\run_timing.py
 Remove-Item Env:HSTEEL_OUTPUT_DIR
 ```

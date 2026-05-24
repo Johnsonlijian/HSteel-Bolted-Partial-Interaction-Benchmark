@@ -27,6 +27,7 @@ ORCHESTRATION.md
 raw/
 raw_data/
 private/
+outputs/timing_rerun/
 *.odb
 *.cae
 *.rpy
