@@ -16,7 +16,7 @@ The package is intentionally narrower than the private working project. It conta
 4. W4 first fixed-`I_eff` slice.
 5. W5 90-case fixed-section benchmark.
 6. W13 `eta_dis` envelope and row-slip-shape sensitivity checks.
-7. Programmatic Figure 1 and Figure 5 generation.
+7. Programmatic Figure 1, Figure 5, and Figure 6 generation.
 8. W16 clean timing table for the core reproduction commands.
 9. Corrected archive-derived section-normalization table approved for public release.
 

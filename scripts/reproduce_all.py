@@ -24,7 +24,7 @@ def main() -> int:
     parser.add_argument("--smoke", action="store_true", help="Run only compile/test checks.")
     args = parser.parse_args()
 
-    run([sys.executable, "-m", "compileall", "solver", "code", "scripts"])
+    run([sys.executable, "-m", "compileall", "solver", "code", "figures", "scripts"])
     run([sys.executable, "-m", "pytest", "code/tests"])
 
     if args.smoke:
@@ -44,6 +44,7 @@ def main() -> int:
     run([sys.executable, "code/run_w5_full_benchmark.py"])
     run([sys.executable, "code/run_w13_sensitivity.py"])
     run([sys.executable, "figures/fig5_sensitivity_ablation.py"])
+    run([sys.executable, "figures/fig6_archive_response_proxy.py"])
     return 0
 
 

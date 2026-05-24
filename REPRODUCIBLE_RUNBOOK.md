@@ -79,6 +79,7 @@ global label count = 5 weak response classes
 $env:HSTEEL_OUTPUT_DIR="outputs"
 python code\run_w13_sensitivity.py
 python figures\fig5_sensitivity_ablation.py
+python figures\fig6_archive_response_proxy.py
 python code\run_w16_timing.py
 Remove-Item Env:HSTEEL_OUTPUT_DIR
 ```
@@ -96,6 +97,7 @@ The figure is written to:
 
 ```text
 figures/fig5_sensitivity_ablation.png
+figures/fig6_archive_response_proxy.png
 outputs/w16_timing_table.csv
 outputs/w16_timing_table.md
 ```
@@ -108,7 +110,13 @@ Full re-fitting requires the digitized calibration CSVs used in the private proj
 
 ## 8. Archive Cross-Check Boundary
 
-The private manuscript uses a corrected archive normalization table as response-proxy evidence. Raw thesis/Abaqus archive files and archive-derived normalized tables are not included in this W15 package because their redistribution boundary is not yet approved. This omission does not affect W4/W5/W13 benchmark reproduction.
+The private manuscript uses a corrected archive normalization table as response-proxy evidence. The corrected derived table `outputs/archive_section_normalized_w3b_corrected.csv` is included with author approval, and Figure 6 can be regenerated from it:
+
+```powershell
+python figures\fig6_archive_response_proxy.py
+```
+
+Raw thesis/Abaqus archive files remain excluded. The archive table and Figure 6 are response-proxy materials only; they do not provide direct bolt-force, contact-pressure, or inter-limb slip histories.
 
 ## 9. Expected Core Files After Full Run
 
@@ -120,4 +128,5 @@ outputs/benchmark_full_summary.json
 outputs/w13_sensitivity_summary.csv
 outputs/w13_sensitivity_case_summary.csv
 figures/fig5_sensitivity_ablation.png
+figures/fig6_archive_response_proxy.png
 ```
