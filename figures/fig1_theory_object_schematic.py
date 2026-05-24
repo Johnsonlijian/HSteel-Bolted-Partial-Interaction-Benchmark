@@ -80,7 +80,7 @@ def main():
         color="#334155",
     )
 
-    fig.savefig(OUT, bbox_inches="tight")
+    fig.savefig(OUT, bbox_inches="tight", dpi=300)
 
 
 if __name__ == "__main__":
