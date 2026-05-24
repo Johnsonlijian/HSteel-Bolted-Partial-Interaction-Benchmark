@@ -1,0 +1,4 @@
+dataset_id,source_doi,n_points,eta_dis,eta_dis_ci_lo,eta_dis_ci_hi,q_b_residual,q_b_residual_ci_lo,q_b_residual_ci_hi,rms_residual,dissipation_map,calibration_date
+ds1_eraliev2021_m12_120c,10.1177/16878140211039428,5,0.30874999,0.17730032,0.33406249,0.48874999,0.45937499,0.53791406,0.060363483,cycle index proxy; dW_f=1 per reported thermal cycle,2026-05-22
+ds2_eraliev2022_abs2_40c,10.3390/app12063001,5,0.1095,0.083999989,0.1105,0.8635,0.8595,0.8685,0.0071693807,cycle index proxy; dW_f=1 per reported thermal cycle,2026-05-22
+pooled,10.1177/16878140211039428;10.3390/app12063001,10,0.20912499,0.083999989,0.33406249,0.676125,0.45937499,0.8685,0.033766432,equal-weight median of per-dataset cycle-proxy fits,2026-05-22

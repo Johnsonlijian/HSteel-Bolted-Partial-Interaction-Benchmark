@@ -1,0 +1,22 @@
+{
+  "peak_base_reaction": 21155.69706250727,
+  "total_loop_energy": 3810858.3896913766,
+  "per_row_cumulative_dissipation": [
+    0.9902465542794219,
+    0.0,
+    0.9902465542794219
+  ],
+  "per_row_final_q_b": [
+    0.6942613862686942,
+    1.0,
+    0.6942613862686942
+  ],
+  "rows_at_residual_floor": [],
+  "n_segments": 10,
+  "n_bolt_rows": 3,
+  "axial_ratio": 0.25,
+  "p_delta_active": true,
+  "composite_factor_final": 0.3333333333333333,
+  "n_newton_iterations_total": 365,
+  "n_newton_failures": 0
+}

@@ -1,0 +1,64 @@
+{
+  "n_cases": 90,
+  "n_converged": 90,
+  "n_failed": 0,
+  "convergence_ratio": 1.0,
+  "n_labels_global": 5,
+  "label_counts_global": {
+    "global_instability_sensitive": 36,
+    "local_buckling_softening": 18,
+    "mixed_slip_stability": 6,
+    "slip_dominated": 23,
+    "stiff_composite_like": 7
+  },
+  "n_slices": 3,
+  "slice_label_counts": {
+    "large_H140_B140_T1-8_T2-12": {
+      "global_instability_sensitive": 12,
+      "local_buckling_softening": 6,
+      "mixed_slip_stability": 3,
+      "slip_dominated": 9
+    },
+    "medium_H100_B100_T1-6_T2-8": {
+      "global_instability_sensitive": 12,
+      "local_buckling_softening": 6,
+      "mixed_slip_stability": 1,
+      "slip_dominated": 8,
+      "stiff_composite_like": 3
+    },
+    "small_H80_B80_T1-5_T2-7": {
+      "global_instability_sensitive": 12,
+      "local_buckling_softening": 6,
+      "mixed_slip_stability": 2,
+      "slip_dominated": 6,
+      "stiff_composite_like": 4
+    }
+  },
+  "min_labels_within_slice": 4,
+  "section_slices": [
+    {
+      "name": "small_H80_B80_T1-5_T2-7",
+      "h": 80.0,
+      "b": 80.0,
+      "t1": 5.0,
+      "t2": 7.0,
+      "baseline_length": 2400.0
+    },
+    {
+      "name": "medium_H100_B100_T1-6_T2-8",
+      "h": 100.0,
+      "b": 100.0,
+      "t1": 6.0,
+      "t2": 8.0,
+      "baseline_length": 3000.0
+    },
+    {
+      "name": "large_H140_B140_T1-8_T2-12",
+      "h": 140.0,
+      "b": 140.0,
+      "t1": 8.0,
+      "t2": 12.0,
+      "baseline_length": 4200.0
+    }
+  ]
+}

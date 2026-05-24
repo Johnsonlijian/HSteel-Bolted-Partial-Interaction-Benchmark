@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Private/internal manuscript material
+sections/
+submission/
+rounds/
+logs/
+gates/
+ORCHESTRATION.md
+00_project_brief.md
+03_claim_evidence_map.md
+04_outline.md
+
+# Raw/private data and large local artifacts
+raw/
+raw_data/
+private/
+*.odb
+*.cae
+*.rpy
+*.jnl
+
+# OS/editor
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/
