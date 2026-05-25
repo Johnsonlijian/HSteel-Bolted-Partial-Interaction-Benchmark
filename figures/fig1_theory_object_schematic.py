@@ -228,7 +228,9 @@ def main() -> None:
             "figure.facecolor": "white",
         }
     )
-    fig = plt.figure(figsize=(13.6, 7.2), dpi=180)
+    # Use a compact physical canvas so figure text remains readable after the
+    # wide schematic is scaled into an Elsevier manuscript page.
+    fig = plt.figure(figsize=(10.8, 5.75), dpi=220)
     gs = fig.add_gridspec(2, 3, width_ratios=[1.45, 1.0, 1.05], height_ratios=[1.0, 1.0], wspace=0.34, hspace=0.34)
 
     ax_member = fig.add_subplot(gs[:, 0])
@@ -243,16 +245,16 @@ def main() -> None:
 
     ax_boundary.text(0.0, 0.86, "Evidence boundary used in this paper", fontsize=10.5, fontweight="bold", color=EDGE)
     blocks = [
-        ("What is supported", "Internal mechanics; analytical limits; deterministic screening trends.", GREEN),
-        ("What is bounded", "Thermal-cycling relaxation is a parameter anchor, not a universal law.", GOLD),
-        ("What is not claimed", "Design resistance; measured row slip; bolt-level validation for H-section tests.", RED),
+        ("What is supported", "Internal mechanics;\nanalytical limits;\nscreening trends.", GREEN),
+        ("What is bounded", "Thermal-cycling\nrelaxation anchors\nthe parameter range.", GOLD),
+        ("What is not claimed", "Design resistance;\nmeasured row slip;\nbolt-level validation.", RED),
     ]
     for j, (head, body, color) in enumerate(blocks):
         x0 = 0.02 + j * 0.325
         ax_boundary.add_patch(Rectangle((x0, 0.18), 0.29, 0.52, fc="#ffffff", ec=color, lw=1.6))
         ax_boundary.add_patch(Rectangle((x0, 0.63), 0.29, 0.07, fc=color, ec=color, lw=0))
         ax_boundary.text(x0 + 0.145, 0.665, head, ha="center", va="center", fontsize=8.7, color="white", fontweight="bold")
-        ax_boundary.text(x0 + 0.02, 0.55, textwrap.fill(body, width=24), ha="left", va="top", fontsize=8.1, color=EDGE, linespacing=1.28)
+        ax_boundary.text(x0 + 0.02, 0.55, body, ha="left", va="top", fontsize=7.9, color=EDGE, linespacing=1.28)
     ax_boundary.set_xlim(0, 1)
     ax_boundary.set_ylim(0, 1)
 
