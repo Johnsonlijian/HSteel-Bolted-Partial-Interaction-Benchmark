@@ -56,6 +56,44 @@ def draw_h_limb(ax, x0: float, y0: float, h: float = 6.0) -> None:
     )
 
 
+def callout(ax, text: str, xy: tuple[float, float], xytext: tuple[float, float], color: str = EDGE, fontsize: float = 8.5) -> None:
+    ax.annotate(
+        text,
+        xy=xy,
+        xytext=xytext,
+        ha="left",
+        va="center",
+        fontsize=fontsize,
+        color=color,
+        arrowprops={
+            "arrowstyle": "-|>",
+            "lw": 1.1,
+            "color": color,
+            "shrinkA": 2,
+            "shrinkB": 3,
+            "connectionstyle": "arc3,rad=0.05",
+        },
+        bbox={"boxstyle": "round,pad=0.16", "fc": "white", "ec": "none", "alpha": 0.88},
+    )
+
+
+def draw_section_inset(ax) -> None:
+    """Small plan/cross-section icon to clarify the built-up H-section object."""
+    x0, y0 = 0.62, 5.75
+    ax.add_patch(Rectangle((x0, y0), 1.45, 1.02, fc="white", ec="#cbd5e1", lw=0.8))
+    ax.text(x0 + 0.08, y0 + 0.9, "cross-section", fontsize=6.8, color=EDGE, ha="left", va="top")
+
+    def mini_h(cx: float) -> None:
+        ax.add_patch(Rectangle((cx - 0.18, y0 + 0.20), 0.36, 0.07, fc=STEEL, ec=EDGE, lw=0.7))
+        ax.add_patch(Rectangle((cx - 0.04, y0 + 0.20), 0.08, 0.50, fc=STEEL, ec=EDGE, lw=0.7))
+        ax.add_patch(Rectangle((cx - 0.18, y0 + 0.63), 0.36, 0.07, fc=STEEL, ec=EDGE, lw=0.7))
+
+    mini_h(x0 + 0.45)
+    mini_h(x0 + 1.02)
+    ax.plot([x0 + 0.735, x0 + 0.735], [y0 + 0.17, y0 + 0.75], ls="--", c="#64748b", lw=0.8)
+    ax.text(x0 + 0.735, y0 + 0.07, "interface", fontsize=6.2, color="#64748b", ha="center")
+
+
 def draw_member_panel(ax) -> None:
     ax.set_xlim(0, 8.6)
     ax.set_ylim(0, 7.4)
@@ -63,31 +101,40 @@ def draw_member_panel(ax) -> None:
     add_panel_title(ax, "(a)", "Bolted built-up H-section member")
 
     # Fixed base and tip displacement show the member-scale boundary problem.
-    ax.add_patch(Rectangle((1.0, 0.35), 6.5, 0.16, fc=EDGE, ec=EDGE, lw=0))
+    ax.add_patch(Rectangle((1.05, 0.35), 6.45, 0.16, fc=EDGE, ec=EDGE, lw=0))
     for x in [1.25, 1.55, 1.85, 2.15, 2.45, 2.75, 3.05, 3.35, 3.65, 3.95, 4.25, 4.55, 4.85, 5.15, 5.45, 5.75, 6.05, 6.35, 6.65, 6.95]:
         ax.plot([x - 0.18, x], [0.16, 0.35], color=EDGE, lw=0.7)
 
-    draw_h_limb(ax, 2.9, 0.55)
-    draw_h_limb(ax, 5.7, 0.55)
-    ax.plot([4.3, 4.3], [0.8, 6.25], ls="--", lw=1.2, c="#64748b")
-    ax.text(4.3, 6.42, "frictional interface", ha="center", va="bottom", fontsize=9.5, color=EDGE)
+    draw_h_limb(ax, 2.65, 0.55)
+    draw_h_limb(ax, 5.35, 0.55)
+    ax.text(2.65, 6.72, "limb A", ha="center", va="bottom", fontsize=7.8, color=EDGE)
+    ax.text(5.35, 6.72, "limb B", ha="center", va="bottom", fontsize=7.8, color=EDGE)
 
+    ax.add_patch(Rectangle((3.92, 0.78), 0.16, 5.54, fc="#e0f2fe", ec="none", alpha=0.55))
+    ax.plot([4.0, 4.0], [0.78, 6.32], ls=(0, (4, 2)), lw=1.25, c="#64748b")
+    callout(ax, "frictional\ninterface", (4.0, 5.86), (4.55, 6.24), EDGE, 8.0)
+
+    # Bolt rows transfer shear across the interface; washers are drawn on both limbs.
     bolt_y = [1.75, 3.45, 5.15]
     for idx, y in enumerate(bolt_y, start=1):
-        ax.plot([3.35, 5.25], [y, y], c=EDGE, lw=2.0, solid_capstyle="round")
-        ax.add_patch(Circle((4.3, y), 0.22, fc=LIGHT, ec=EDGE, lw=1.45))
-        ax.text(5.45, y, f"row {idx}", ha="left", va="center", fontsize=9.2, color=EDGE)
+        ax.plot([2.95, 5.05], [y, y], c=EDGE, lw=1.8, solid_capstyle="round")
+        for x in (3.58, 4.42):
+            ax.add_patch(Circle((x, y), 0.19, fc=LIGHT, ec=EDGE, lw=1.2))
+            ax.add_patch(Circle((x, y), 0.055, fc=EDGE, ec=EDGE, lw=0))
+        ax.text(5.12, y, f"row {idx}", ha="left", va="center", fontsize=8.2, color=EDGE)
 
-    ax.add_patch(FancyArrowPatch((3.9, 4.45), (3.15, 4.45), arrowstyle="-|>", mutation_scale=14, lw=1.8, color=BLUE))
-    ax.add_patch(FancyArrowPatch((4.7, 4.25), (5.45, 4.25), arrowstyle="-|>", mutation_scale=14, lw=1.8, color=BLUE))
-    ax.text(4.3, 4.77, r"inter-limb slip demand $\Delta u_{b,i}$", ha="center", fontsize=9.2, color=BLUE)
+    ax.add_patch(FancyArrowPatch((3.78, 4.52), (3.12, 4.52), arrowstyle="-|>", mutation_scale=13, lw=1.7, color=BLUE))
+    ax.add_patch(FancyArrowPatch((4.22, 4.32), (4.88, 4.32), arrowstyle="-|>", mutation_scale=13, lw=1.7, color=BLUE))
+    callout(ax, r"slip demand" + "\n" + r"$\Delta u_{b,i}$", (4.05, 4.43), (1.05, 4.75), BLUE, 8.1)
 
-    ax.add_patch(FancyArrowPatch((4.05, 2.35), (3.42, 2.35), arrowstyle="-|>", mutation_scale=13, lw=1.8, color=RED))
-    ax.add_patch(FancyArrowPatch((4.55, 2.17), (5.18, 2.17), arrowstyle="-|>", mutation_scale=13, lw=1.8, color=RED))
-    ax.text(4.3, 2.66, r"row capacity $F_{y,i}=\mu q_{b,i}$", ha="center", fontsize=9.2, color=RED)
+    ax.add_patch(FancyArrowPatch((3.78, 2.36), (3.18, 2.36), arrowstyle="-|>", mutation_scale=12, lw=1.7, color=RED))
+    ax.add_patch(FancyArrowPatch((4.22, 2.18), (4.82, 2.18), arrowstyle="-|>", mutation_scale=12, lw=1.7, color=RED))
+    callout(ax, r"friction capacity" + "\n" + r"$F_{y,i}=\mu q_{b,i}$", (4.02, 2.27), (0.82, 2.55), RED, 8.1)
 
-    ax.add_patch(FancyArrowPatch((6.35, 6.5), (6.85, 6.5), arrowstyle="-|>", mutation_scale=16, lw=2.0, color=GOLD))
-    ax.text(6.95, 6.5, r"member drift $u_\mathrm{tip}$", va="center", ha="left", fontsize=9.2, color=GOLD)
+    ax.add_patch(FancyArrowPatch((5.95, 6.48), (6.64, 6.48), arrowstyle="-|>", mutation_scale=16, lw=2.0, color=GOLD))
+    ax.text(6.72, 6.48, r"member drift" + "\n" + r"$u_{\mathrm{tip}}$", va="center", ha="left", fontsize=8.5, color=GOLD)
+
+    draw_section_inset(ax)
 
     ax.text(
         0.15,
